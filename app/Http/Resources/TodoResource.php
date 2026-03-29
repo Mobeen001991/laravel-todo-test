@@ -20,6 +20,12 @@ class TodoResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'priority' => $this->priority,
+            'is_completed' => $this->is_completed,
+            'completed_at' => $this->completed_at,
+            'due_at' => $this->due_at,
+            'is_overdue' => $this->due_at !== null
+                && ! $this->is_completed
+                && $this->due_at->isPast(),
             'file_path' => $this->file_path,
             'user_id' => $this->user_id,
             'created_at' => $this->created_at,
